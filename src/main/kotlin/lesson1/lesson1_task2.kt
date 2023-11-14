@@ -2,11 +2,11 @@ package lesson1
 
 fun main(){
 
-    var count_of_orders: Int = 75
-    val gratitude_order: String = "Благодарим за покупку!"
+    var countOfOrders: Int = 75
+    val gratitudeOrder: String = "Благодарим за покупку!"
 
-    println("Кол-во заказов: $count_of_orders")
-    println(gratitude_order)
+    println("Кол-во заказов: $countOfOrders")
+    println(gratitudeOrder)
 
     var numbersOfWorkers: Int = 2000
 
