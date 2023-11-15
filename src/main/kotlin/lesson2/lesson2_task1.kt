@@ -1,12 +1,12 @@
 package lesson2
 
 
-fun main(){
+fun main() {
 
-    val countOfStudents: Float = 4f
+    val countOfStudents = 4
     val sumOfGrades: Float = 3f + 4f + 3f + 5f
 
-    val average: Float = (sumOfGrades / countOfStudents)
+    val average: Float = (sumOfGrades / countOfStudents).toFloat()
 
     println("%.2f".format(average))
 
