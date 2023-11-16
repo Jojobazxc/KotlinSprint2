@@ -1,11 +1,17 @@
 package lesson2
 
-fun main(){
+fun main() {
 
     val countOfIronOre: Short = 11
     val countOfCrystalOre: Short = 7
+    var percents: Float = 20f
 
-    println("Кол-во бонусного железа: ${(countOfIronOre * 0.2).toInt()}")
-    println("Кол-во бонусной кристалической руды: ${(countOfCrystalOre * 0.2).toInt()}")
+    percents /= 100
+
+    val countOfIronOreBonus = countOfIronOre * percents
+    val countOfCrystalOreBonus = countOfCrystalOre * percents
+
+    println("Кол-во бонусного железа: ${countOfIronOreBonus.toInt()}")
+    println("Кол-во бонусной кристалической руды: ${countOfCrystalOreBonus.toInt()}")
 
 }
