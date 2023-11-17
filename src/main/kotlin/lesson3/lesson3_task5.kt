@@ -4,9 +4,10 @@ fun main() {
 
     val steps = "D2-D4;0"
 
-    val startStep = steps.substring(0, 2)
-    val finishStep = steps.substring(3, 5)
-    val numberOfStep = steps.substring(6, 7)
+    val stepsSplit = steps.split(";", "-")
+    val startStep = stepsSplit[0]
+    val finishStep = stepsSplit[1]
+    val numberOfStep = stepsSplit[2]
 
     println("Начальная позиция: $startStep")
     println("Конечная позиция: $finishStep")
