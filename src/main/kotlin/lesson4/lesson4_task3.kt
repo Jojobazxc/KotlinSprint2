@@ -8,7 +8,7 @@ fun main() {
     val season = "зима"
 
     val condition = ((isSunny == IS_SUNNY) && (isAwningOpen == IS_AWNING_OPEN)
-            && (humidity == HUMIDITY) && (season == SEASON))
+            && (humidity == HUMIDITY) && (season != SEASON))
 
     println("Благоприятные ли условия для роста бобовых? ${condition}")
 
@@ -17,4 +17,4 @@ fun main() {
 const val HUMIDITY = 20
 const val IS_SUNNY: Boolean = true
 const val IS_AWNING_OPEN: Boolean = true
-const val SEASON = "не зима"
+const val SEASON = "зима"
