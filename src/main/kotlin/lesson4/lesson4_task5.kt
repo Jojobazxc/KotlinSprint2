@@ -15,6 +15,12 @@ fun main() {
     val mainNumberOfProvisions = 50
     val alternativeNumberOfCrew = 70
 
-    println("Разрешение на отбытие: ${(!damageOfShip && (numberOfCrew in mainNumberOfCrew) && (numberOfProvisions > mainNumberOfProvisions) && weatherIsClear) || (damageOfShip && (numberOfCrew == alternativeNumberOfCrew) && (numberOfProvisions >= mainNumberOfProvisions) && weatherIsClear)}")
+    val mainCondition = (!damageOfShip && (numberOfCrew in mainNumberOfCrew)
+            && (numberOfProvisions > mainNumberOfProvisions) && weatherIsClear)
+    val alternativeCondition = (damageOfShip && (numberOfCrew == alternativeNumberOfCrew)
+            && (numberOfProvisions >= mainNumberOfProvisions) && weatherIsClear)
+    val permission = mainCondition || alternativeCondition
+
+    println("Разрешение на отбытие: $permission")
 
 }
