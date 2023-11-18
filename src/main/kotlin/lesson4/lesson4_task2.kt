@@ -10,8 +10,13 @@ fun main() {
     val secondCargoMass = 50
     val secondCargoVolume = 100
 
-    println("Груз с весом $firstCargoMass кг и объемом $firstCargoVolume л соответствует категории 'Average': ${(firstCargoMass in averageMass) && (firstCargoVolume in averageVolume)}")
-    println("Груз с весом $secondCargoMass кг и объемом $secondCargoVolume л соответствует категории 'Average': ${(secondCargoMass in averageMass) && (secondCargoVolume in averageVolume)}")
+    val firstCondition: Boolean = (firstCargoMass in averageMass) && (firstCargoVolume in averageVolume)
+    val secondCondition: Boolean = (secondCargoMass in averageMass) && (secondCargoVolume in averageVolume)
+
+    println("Груз с весом $firstCargoMass кг и объемом $firstCargoVolume л " +
+            "соответствует категории 'Average': $firstCondition")
+    println("Груз с весом $secondCargoMass кг и объемом $secondCargoVolume л " +
+            "соответствует категории 'Average': $secondCondition")
 
 }
 
