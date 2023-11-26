@@ -3,14 +3,10 @@ package lesson6
 fun main() {
 
     print("Введите колличество секунд: ")
-    val timer = readln().toInt()
-    var startTime = 0
+    val timer = readln().toLong()
 
-    while(timer > startTime){
-        Thread.sleep(1000)
-        startTime++
+    Thread.sleep((timer * 1000))
 
-    }
     println("Прошло $timer секунд")
 
 }
