@@ -9,43 +9,30 @@ fun main() {
     print("Введите пароль: ")
     val correctUserPassword: String = readln()
 
-    var userLoginSign: String
-    var userPasswordSign: String
-    var counterOfTries: Int
+    var counterInStart = 0
     var number1: Int
     var number2: Int
     var result: Int
     var userResult: Int
 
-    do {
+    while (counterInStart <= COUNTER_OF_TRIES) {
 
-        println("Для авторизации введите данные еще раз")
-        print("Логин: ")
-        userLoginSign = readln()
-        print("Пароль: ")
-        userPasswordSign = readln()
+        number1 = Random.nextInt(1, 10)
+        number2 = Random.nextInt(1, 10)
+        result = number1 + number2
 
-        counterOfTries = 3
+        println("Для авторизации реши пример $number1 + $number2")
+        userResult = readln().toInt()
 
-        while (counterOfTries > 0) {
+        if (userResult == result) break
+        else counterInStart++
 
-            number1 = Random.nextInt(1, 10)
-            number2 = Random.nextInt(1, 10)
-            result = number1 + number2
-
-            println("Для авторизации реши пример $number1 + $number2")
-            userResult = readln().toInt()
-
-            if (userResult == result) break
-            else counterOfTries--
-
-            if (counterOfTries == 0) {
-                println("Доступ запрещен")
-                return
-            }
+        if (counterInStart == COUNTER_OF_TRIES) {
+            println("Доступ запрещен")
+            return
         }
-    } while (correctUserLogin != userLoginSign || correctUserPassword != userPasswordSign)
-
+    }
     println("Добро пожаловать!")
-
 }
+
+const val COUNTER_OF_TRIES = 3
