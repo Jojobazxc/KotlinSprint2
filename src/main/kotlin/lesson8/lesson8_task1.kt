@@ -9,7 +9,7 @@ fun main() {
     var sumOfViews = 0
     val rangeForRandom = 1000..10000
 
-    for(i in 0..<DAY_IN_WEEK){
+    for(i in arrayOfViews){
         arrayOfViews[i] = Random.nextInt(rangeForRandom)
         sumOfViews += arrayOfViews[i]
     }
