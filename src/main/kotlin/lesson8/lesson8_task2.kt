@@ -6,14 +6,14 @@ fun main() {
 
     print("Какой ингредиент вы хотите найти: ")
     val userIngredient = readln()
+    var flag: Boolean = false
 
     for (i in arrayOfIngredients) {
         if (i == userIngredient) {
-            println("Ингредиент \"$i\" в рецепте есть")
-        } else {
-            println("Такого ингредиента в рецепте нет")
-            break
+            flag = true
         }
     }
+    if (flag) println("Ингредиент \"$userIngredient\" в рецепте есть")
+    else println("Такого ингредиента в рецепте нет")
 
 }
