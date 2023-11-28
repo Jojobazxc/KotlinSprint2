@@ -1,18 +1,17 @@
 package lesson7
 
-import kotlin.random.Random
 
 fun main() {
 
-    var numberForSign: String
-    var enterUserNumber: String
+    var numberForSign: Int
+    var enterUserNumber: Int
 
     do {
 
-        numberForSign = Random.nextInt(1000, 10000).toString()
+        numberForSign = (1000..9999).random()
         println("Ваш код для авторизации: $numberForSign.")
         print("Введите полученный код для авторизации: ")
-        enterUserNumber = readln()
+        enterUserNumber = readln().toInt()
 
     } while (enterUserNumber != numberForSign)
 
