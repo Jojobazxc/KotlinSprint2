@@ -1,35 +1,43 @@
 package lesson7
 
-import kotlin.random.Random
 
 fun main() {
 
-    var password = ""
     print("Задайте длину пароля не менее 6 символов: ")
     val userLengthOfPassword = readln().toInt()
 
-    var case: Int
+    val allowedSymbols = ('A'..'Z') + ('a'..'z') + ('0'..'9')
     var randomChar: String
+    var password: String = ""
 
-    for (i in 0..userLengthOfPassword) {
-        case = Random.nextInt(0, 3)
-
-        when (case) {
-            0 -> {
-                randomChar = ('A'..'Z').random().toString()
-                password += randomChar
-            }
-
-            1 -> {
-                randomChar = ('a'..'z').random().toString()
-                password += randomChar
-            }
-
-            2 -> {
-                randomChar = Random.nextInt(1, 10).toString()
-                password += randomChar
-            }
-        }
+    for (i in 0..<userLengthOfPassword) {
+        randomChar = (allowedSymbols).random().toString()
+        password += randomChar
     }
-    println("Сгенерированный пароль: $password")
+
+    val containsUpperCase = password.any { it in 'A'..'Z' }
+    val containsLowerCase = password.any { it in 'a'..'z' }
+    val containsNumberCase = password.any { it in '0'..'9' }
+
+    if (containsLowerCase && containsUpperCase && containsNumberCase) {
+        println("Ваш пароль: $password")
+    }
+    if (!containsUpperCase) {
+        password = password.dropLast(1)
+        password += ('A'..'Z').random()
+        println("Ваш пароль: $password")
+    }
+    if (!containsLowerCase) {
+        password = password.dropLast(1)
+        password += ('a'..'z').random()
+        println("Ваш пароль: $password")
+    }
+    if (!containsNumberCase) {
+        password = password.dropLast(1)
+        password += ('0'..'9').random()
+        println("Ваш пароль: $password")
+    }
+
 }
+
+
