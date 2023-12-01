@@ -21,6 +21,7 @@ fun main() {
 
     if (containsLowerCase && containsUpperCase && containsNumberCase) {
         println("Ваш пароль: $password")
+        return
     }
     else{
         if (!containsUpperCase) {
