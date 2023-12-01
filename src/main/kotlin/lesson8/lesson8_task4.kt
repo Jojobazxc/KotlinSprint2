@@ -12,12 +12,10 @@ fun main() {
     print("Какой элемент вы бы хотели заменить: ")
     val userIngredient = readln()
 
-    val newUserIngredient: String
     if (userIngredient !in arrayOfIngredients) println("Такого ингредиента нет в рецепте")
     else {
         print("Введите ингредиент, на который вы хотите заменить ингредиент \"$userIngredient\": ")
-        newUserIngredient = readln()
-        arrayOfIngredients[arrayOfIngredients.indexOf(userIngredient)] = newUserIngredient
+        arrayOfIngredients[arrayOfIngredients.indexOf(userIngredient)] = readln()
         println("Готово! Вы сохранили следующий список: ")
         arrayOfIngredients.forEach { println(it) }
     }
