@@ -22,20 +22,22 @@ fun main() {
     if (containsLowerCase && containsUpperCase && containsNumberCase) {
         println("Ваш пароль: $password")
     }
-    if (!containsUpperCase) {
-        password = password.dropLast(1)
-        password += ('A'..'Z').random()
-        println("Ваш пароль: $password")
-    }
-    if (!containsLowerCase) {
-        password = password.dropLast(1)
-        password += ('a'..'z').random()
-        println("Ваш пароль: $password")
-    }
-    if (!containsNumberCase) {
-        password = password.dropLast(1)
-        password += ('0'..'9').random()
-        println("Ваш пароль: $password")
+    else{
+        if (!containsUpperCase) {
+            password = password.dropLast(1)
+            password += ('A'..'Z').random()
+            println("Ваш пароль: $password")
+        }
+        if (!containsLowerCase) {
+            password = password.dropLast(1)
+            password += ('a'..'z').random()
+            println("Ваш пароль: $password")
+        }
+        if (!containsNumberCase) {
+            password = password.dropLast(1)
+            password += ('0'..'9').random()
+            println("Ваш пароль: $password")
+        }
     }
 
 }
