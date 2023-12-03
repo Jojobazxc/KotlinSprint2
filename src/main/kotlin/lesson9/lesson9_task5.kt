@@ -4,22 +4,19 @@ import java.util.*
 
 fun main() {
 
-    val listOfIngredients = mutableSetOf<String>()
+    val listOfIngredients = sortedSetOf<String>()
 
     var userIngredient: String
     println("Введите пять ингредиентов: ")
 
-    for(i in 0..<5){
+    for (i in 0..<5) {
         userIngredient = readln()
         listOfIngredients.add(userIngredient)
     }
 
-    val sortedListOfIngredients = listOfIngredients.sorted()
-    println(sortedListOfIngredients)
-
     val separator = ", "
-    val stringOfList = sortedListOfIngredients.joinToString(separator)
+    val stringOfList = listOfIngredients.joinToString(separator)
 
-    println(stringOfList.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() })
+    println(stringOfList.replaceFirstChar { it.titlecase(Locale.getDefault()) })
 
 }
