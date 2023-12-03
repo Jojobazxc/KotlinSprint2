@@ -12,8 +12,9 @@ fun main() {
     print("Желаете добавить еще? ")
     val userAnswer = readln()
     val userIngredient: String
+    val areEqual = userAnswer.equals(RIGHT_ANSWER, ignoreCase = true)
 
-    if (userAnswer == "да"){
+    if (areEqual){
         println("Какой ингредиент вы хотите добавить?")
         userIngredient = readln()
         listOfIngredients.add(userIngredient)
@@ -26,3 +27,5 @@ fun main() {
     }
 
 }
+
+const val RIGHT_ANSWER = "да"
