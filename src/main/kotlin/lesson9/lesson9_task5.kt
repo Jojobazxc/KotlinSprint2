@@ -9,7 +9,7 @@ fun main() {
     var userIngredient: String
     println("Введите пять ингредиентов: ")
 
-    for (i in 0..<5) {
+    for (i in 1..5) {
         userIngredient = readln()
         listOfIngredients.add(userIngredient)
     }
