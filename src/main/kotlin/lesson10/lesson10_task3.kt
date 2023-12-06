@@ -11,7 +11,12 @@ fun main() {
 
 fun createRandomPassword(lengthOfPassword: Int): String {
 
-    val allowedSymbols = "!\"#$%&\'()*+,-./ " + "0123456789"
-    return (1..lengthOfPassword).map { (allowedSymbols).random() }.joinToString("")
-
+    val allowedSymbols = ('!'..')')
+    val allowedNumbers = ('0'..'9')
+    var password = ""
+    for (i in 1..lengthOfPassword) {
+        password += if (i % 2 == 0) (allowedSymbols).random()
+        else (allowedNumbers).random()
+    }
+    return password
 }
