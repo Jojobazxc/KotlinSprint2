@@ -2,17 +2,16 @@ package lesson10
 
 fun main() {
 
-    var humanTrow: Int?
-    var roboticThrow: Int?
+    var humanTrow: Int
+    var roboticThrow: Int
     var agreementToPlay: Boolean
     var counter = 0
-    var flag = false
+
 
     do {
         humanTrow = getTry()
         roboticThrow = getTry()
-        flag = getProgressOfTheGame(humanTrow, roboticThrow, flag)
-        if (flag) counter++
+        if (getProgressOfTheGame(humanTrow, roboticThrow)) counter++
         println("Хотите сыграть ещё? true/false ")
         agreementToPlay = readln().toBoolean()
 
@@ -21,24 +20,23 @@ fun main() {
 
 }
 
-fun getTry(): Int? = (0..6).random()
+fun getTry(): Int = (0..6).random()
 
 
-fun getProgressOfTheGame(humanThrow: Int?, roboticThrow: Int?, flag: Boolean?): Boolean {
-    var flag = false
-    if (humanThrow!! > roboticThrow!!) {
-        println(
-            "Человечество победило!\n" +
-                    "Результат игры $humanThrow:$roboticThrow"
-        )
+fun getProgressOfTheGame(humanThrow: Int, roboticThrow: Int): Boolean {
+    val flag: Boolean
+    if (humanThrow > roboticThrow) {
+        println("Человечество победило!")
         flag = true
-    } else if (humanThrow == roboticThrow) println(
-        "У человечества и роботов ничья!\n" +
-                "Результат игры $humanThrow:$roboticThrow"
-    )
-    else println(
-        "Роботы победили!\n" +
-                "Результат игры $humanThrow:$roboticThrow"
-    )
+    } else if
+                   (humanThrow == roboticThrow) {
+        println("У человечества и роботов ничья!")
+        flag = false
+    } else {
+        println("Роботы победили!")
+        flag = false
+    }
+    println("Результат игры $humanThrow:$roboticThrow")
     return flag
+
 }
