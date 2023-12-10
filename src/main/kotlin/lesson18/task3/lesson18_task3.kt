@@ -16,5 +16,5 @@ fun main() {
     cat.getPlay()
     cat.getEat()
     cat.getSleep()
-
+    /**/
 }
