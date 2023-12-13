@@ -2,16 +2,13 @@ package lesson10
 
 fun main() {
 
-    var humanTrow: Int
-    var roboticThrow: Int
+    var listOfSteps: List<Int>
     var agreementToPlay: Boolean
     var counter = 0
 
-
     do {
-        humanTrow = getTry()
-        roboticThrow = getTry()
-        if (getProgressOfTheGame(humanTrow, roboticThrow)) counter++
+        listOfSteps = listOf(getTry(), getTry())
+        if (getProgressOfTheGame(listOfSteps[0], listOfSteps[1])) counter++
         println("Хотите сыграть ещё? true/false ")
         agreementToPlay = readln().toBoolean()
 
@@ -21,7 +18,6 @@ fun main() {
 }
 
 fun getTry(): Int = (0..6).random()
-
 
 fun getProgressOfTheGame(humanThrow: Int, roboticThrow: Int): Boolean {
     val flag: Boolean
