@@ -1,20 +1,19 @@
 package lesson10
 
 fun main() {
+
     print("Введите логин: ")
     val userLogin = readln()
     print("Введите пароль: ")
     val userPassword = readln()
     val token = authorizations(userLogin, userPassword)
-    val contentsOfTheBasket = getBusket(token)
-    if (contentsOfTheBasket != null) println("Содержимое корзины $contentsOfTheBasket.")
-    else println("Ошибка авторизации!")
+    if (token != null) println("Содержимое корзины ${getBasket(token)}.") else println("Ошибка авторизации! token = $token")
 
 }
 
 fun getToken(): String {
     val range = ('0'..'9') + ('A'..'Z') + ('a'..'z')
-    return (1..LENGHT_OF_TOKEN).map { range.random() }.joinToString("")
+    return (1..LENGTH_OF_TOKEN).map { range.random() }.joinToString("")
 }
 
 fun authorizations(userLogin: String, userPassword: String): String? {
@@ -24,14 +23,14 @@ fun authorizations(userLogin: String, userPassword: String): String? {
     } else null
 }
 
-fun getBusket(token: String?): List<String>? {
+fun getBasket(token: String?): List<String>? {
     return if (token != null) {
-        busket
+        basket
     } else null
 }
 
 
-const val LOGIN = "pupkin123"
-const val PASSWORD = "20048741"
-val busket = listOf("новогодняя игрушка", "книга", "весы", "вешалки", "картина")
-const val LENGHT_OF_TOKEN = 32
+const val LOGIN = "123"
+const val PASSWORD = "123"
+val basket = listOf("новогодняя игрушка", "книга", "весы", "вешалки", "картина")
+const val LENGTH_OF_TOKEN = 32
