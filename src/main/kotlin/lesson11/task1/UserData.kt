@@ -5,9 +5,4 @@ class UserData(
     val userPassword: String,
     val userToken: String,
     val userEmail: String,
-    )
-{
-
-
-
-}
+)
