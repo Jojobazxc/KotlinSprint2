@@ -5,14 +5,14 @@ class User1(
     val nickname: String,
     val statusOfSpeaking: String,
 )
+
 class Room(
     val cover: String,
     val nameOfRoom: String,
-    val userList: MutableList<User1>
+    val userList: List<User1>
 ) {
 
-
-    fun getRoomInfo(selectRoom: Int, roomList: MutableList<Room>) {
+    fun getRoomInfo(selectRoom: Int, roomList: List<Room>) {
         println("Название комнаты: ${roomList[selectRoom].nameOfRoom}")
         println("Обложка комнаты: ${roomList[selectRoom].cover}")
         roomList[selectRoom].userList.forEach { user ->

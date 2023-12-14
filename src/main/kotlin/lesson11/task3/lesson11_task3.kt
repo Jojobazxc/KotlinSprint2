@@ -28,8 +28,8 @@ fun main() {
         statusOfSpeaking = "пользователь заглушен"
     )
 
-    val userList1: MutableList<User1> = mutableListOf(user1, user2, user3)
-    val userList2: MutableList<User1> = mutableListOf(user4, user5)
+    val userList1: List<User1> = listOf(user1, user2, user3)
+    val userList2: List<User1> = listOf(user4, user5)
 
     val room1 = Room(
         cover = "room1.jpg",
@@ -42,14 +42,12 @@ fun main() {
         userList = userList2
     )
 
-    val roomList: MutableList<Room> = mutableListOf(room1, room2)
+    val roomList: List<Room> = listOf(room1, room2)
     getListOfRoom(roomList)
 
     println("В какую комнату вы хотите зайти?")
     val selectRoom: Int = readln().toInt() - 1
     roomList[selectRoom].getRoomInfo(selectRoom, roomList)
-
-
 
     println("На какого пользователя хотите нажать?")
     val selectUser: Int = readln().toInt() - 1
