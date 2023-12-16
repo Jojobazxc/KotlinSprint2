@@ -8,14 +8,17 @@ fun main() {
 }
 
 class Weather3(
-    private val dayTemperature: Int,
-    private val nightTemperature: Int,
-    private val isPrecipitationToday: Boolean
+    dayTemperature: Int,
+    nightTemperature: Int,
+    isPrecipitationToday: Boolean
 ) {
+    private val dayTemperature = dayTemperature - 273
+    private val nightTemperature = nightTemperature - 273
+    private val isPrecipitationToday = isPrecipitationToday
 
     fun printInformation() {
-        println("Температура днем: ${dayTemperature - 273}")
-        println("Температура ночью: ${nightTemperature - 273}")
+        println("Температура днем: $dayTemperature")
+        println("Температура ночью: $nightTemperature")
         println("Осадки сегодня: $isPrecipitationToday")
     }
 
