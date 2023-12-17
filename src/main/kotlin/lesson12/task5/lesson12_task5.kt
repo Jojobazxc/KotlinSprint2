@@ -1,5 +1,7 @@
 package lesson12.task5
 
+import kotlin.random.Random
+
 fun main() {
 
     val listOfData: MutableList<Weather5> = mutableListOf()
@@ -9,19 +11,19 @@ fun main() {
     var isPrecipitationToday: Boolean
 
     for (i in 1..30) {
-        dayTemperature = (15..30).random()
+        dayTemperature = (288..303).random()
         nightTemperature =
-            ((dayTemperature - 5)..<dayTemperature).random() // не знал, как сделать так, чтобы температура ночью была меньше дневной
-        isPrecipitationToday = Boolean.random()
+            ((dayTemperature - 10)..<dayTemperature).random() // не знал, как сделать так, чтобы температура ночью была меньше дневной
+        isPrecipitationToday = Random.nextBoolean()
         objectOfClass = Weather5(dayTemperature, nightTemperature, isPrecipitationToday)
         listOfData.add(objectOfClass)
     }
 
     val listOfDayTemperature = mutableListOf<Int>()
-    listOfData.forEach { listOfDayTemperature.add(it.dayTemperature) }
+    listOfData.forEach { listOfDayTemperature.add(it.dayTemperature - 273) }
 
     val listOfNightTemperature = mutableListOf<Int>()
-    listOfData.forEach { listOfNightTemperature.add(it.nightTemperature) }
+    listOfData.forEach { listOfNightTemperature.add(it.nightTemperature - 273) }
 
     val listOfDaysWithPrecipitation = mutableListOf<Boolean>()
     listOfData.forEach { if (it.isPrecipitationToday) listOfDaysWithPrecipitation.add(it.isPrecipitationToday) }
@@ -38,8 +40,5 @@ fun main() {
 
 class Weather5(val dayTemperature: Int, val nightTemperature: Int, var isPrecipitationToday: Boolean)
 
-private fun Boolean.Companion.random(): Boolean {
-    return listOf(true, false).random()
-}
 
 //для примера тут взял летние дни
