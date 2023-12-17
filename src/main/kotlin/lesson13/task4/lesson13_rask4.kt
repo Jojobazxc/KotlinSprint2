@@ -36,3 +36,6 @@ fun main() {
     listOfContacts.forEach { println("Имя:${it.name}\nНомер:${it.phoneNumber}\nКомпания: ${it.company} \n") }
 
 }
+
+class Phonebook4(val name: String, val phoneNumber: Long, var company: String?) {
+}
