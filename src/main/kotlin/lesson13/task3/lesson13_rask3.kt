@@ -16,3 +16,6 @@ fun main() {
     listOfCompanies.forEach { println(it) }
 
 }
+
+class Phonebook3(val name: String, val phoneNumber: Long, val company: String? = null) {
+}
