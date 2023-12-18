@@ -17,25 +17,25 @@ fun main() {
         println("Введите номер:")
         phoneNumber = readln().toLongOrNull() ?: 0
 
-        println("Введите компанию (можно пропустить):")
-        company = readln()
+        if (phoneNumber.toInt() != 0) {
+            println("Введите компанию (можно пропустить):")
+            company = readln()
 
-        if (company == "") company = null
+            if (company == "") company = null
+            val contact = Phonebook4(nameOfContact, phoneNumber, company)
 
-        val contact = Phonebook4(nameOfContact, phoneNumber, company)
+            listOfContacts.add(contact)
 
-        if (contact.phoneNumber.toInt() != 0) listOfContacts.add(contact)
-        else println("Вы не ввели номер телофона, попробуйте еще раз")
+        } else println("Вы не ввели номер телофона, попробуйте еще раз")
 
         print("Введите \"стоп\", что прекратить заполнение или \"продолжить\", чтобы продолжить заполнять: ")
         stopWord = readln().lowercase(Locale.getDefault())
 
     } while (stopWord != "стоп")
 
-    println("Телефонная книга выглядит так:")
+    println("Телефонная книга выглядит так:\n")
     listOfContacts.forEach { println("Имя:${it.name}\nНомер:${it.phoneNumber}\nКомпания: ${it.company} \n") }
 
 }
 
-class Phonebook4(val name: String, val phoneNumber: Long, var company: String?) {
-}
+class Phonebook4(val name: String, val phoneNumber: Long, var company: String?)
