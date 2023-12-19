@@ -7,7 +7,9 @@ fun main() {
 
     try {
         val contact = Phonebook5("", number.toLong(), "")
-    }catch (e:NumberFormatException){
+    } catch (e: NumberFormatException) {
         println("Ошибка: ${e::class.simpleName}")
     }
 }
+
+class Phonebook5(val name: String, val phoneNumber: Long, var company: String?)
