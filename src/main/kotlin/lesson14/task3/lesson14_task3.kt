@@ -5,15 +5,15 @@ import kotlin.math.pow
 
 fun main() {
 
-    val circle1 = Circle("black", 0.00, 5.00, 0.00)
-    val rectangle1 = Rectangle("black", 0.00, 0.00, 10.00, 5.00)
-    val circle2 = Circle("white", 0.00, 6.00, 0.00)
-    val rectangle2 = Rectangle("white", 0.00, 0.00, 20.00, 10.00)
+    val circle1 = Circle(BLACK_COLOR, 0.00, 5.00, 0.00)
+    val rectangle1 = Rectangle(BLACK_COLOR, 0.00, 0.00, 10.00, 5.00)
+    val circle2 = Circle(WHITE_COLOR, 0.00, 6.00, 0.00)
+    val rectangle2 = Rectangle(WHITE_COLOR, 0.00, 0.00, 20.00, 10.00)
 
     val figures = listOf(circle1, circle2, rectangle1, rectangle2)
 
-    val sumOfPerimeterBlack = figures.filter { it.color == "black" }.sumOf { it.getPerimeterOfTheFigure() }
-    val sumOfTheAreaWhite = figures.filter { it.color == "white" }.sumOf { it.getAreaOfTheFigure() }
+    val sumOfPerimeterBlack = figures.filter { it.color == BLACK_COLOR }.sumOf { it.getPerimeterOfTheFigure() }
+    val sumOfTheAreaWhite = figures.filter { it.color == WHITE_COLOR }.sumOf { it.getAreaOfTheFigure() }
 
     println("Сумма периметров черных фигур: %.2f".format(sumOfPerimeterBlack))
     println("Сумма площадей белых фигур: %.2f".format(sumOfTheAreaWhite))
@@ -60,3 +60,7 @@ class Rectangle(
         return perimeter
     }
 }
+
+
+const val WHITE_COLOR = "белый"
+const val BLACK_COLOR = "черный"
