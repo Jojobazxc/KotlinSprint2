@@ -25,3 +25,7 @@ class Component(
     override fun startSearch(product: Product) {
     }
 }
+
+interface Search {
+    fun startSearch(product: Product)
+}
