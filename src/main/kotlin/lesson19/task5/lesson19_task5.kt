@@ -5,37 +5,33 @@ fun main() {
     val listOfPeople: MutableList<Human> = mutableListOf()
 
     var name: String
-    var gender: String
+    var genderForReadLine: String
     var human: Human
+    var gender: Gender = Gender.UNSPECIFIED
 
-    for (i in 1..5){
+
+    for (i in 1..5) {
         println("Введите имя с большой буквы, затем пол человек. Доступны: Мужской, Женский и \"Не указан\"")
         name = readln()
-        gender = readln()
-        when(gender){
-            "Мужской" -> getGender(Gender.MALE)
-            "Женский" -> getGender(Gender.FEMALE)
-            "Не указан" -> getGender(Gender.UNSPECIFIED)
+        genderForReadLine = readln()
+        when (genderForReadLine) {
+            "Мужской" -> gender = Gender.MALE
+            "Женский" -> gender = Gender.FEMALE
+            "Не указан" -> gender = Gender.UNSPECIFIED
         }
         human = Human(name, gender)
         listOfPeople.add(human)
     }
-    listOfPeople.forEach { println("${it.name}, ${it.gender}") }
+    listOfPeople.forEach { println("${it.name}, ${it.gender.translate}") }
 }
 
-class Human(val name: String, val gender: String)
+class Human(val name: String, val gender: Gender)
 
-enum class Gender(val translate: String){
+enum class Gender(val translate: String) {
     MALE("Мужской"),
     FEMALE("Женский"),
     UNSPECIFIED("Не указан"),
 }
 
-fun getGender(gender: Gender): String{
-    return when(gender){
-        Gender.MALE -> Gender.MALE.translate
-        Gender.FEMALE -> Gender.FEMALE.translate
-        Gender.UNSPECIFIED -> Gender.UNSPECIFIED.translate
-    }
-}
+
 
