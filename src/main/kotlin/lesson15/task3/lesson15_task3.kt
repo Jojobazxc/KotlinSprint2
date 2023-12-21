@@ -17,10 +17,6 @@ fun main() {
 
 abstract class User {
     abstract val name: String
-    abstract val canRead: Boolean
-    abstract val canWrite: Boolean
-    abstract val canRemoveMessages: Boolean
-    abstract val canRemoveUsers: Boolean
 
     abstract fun readForum()
     abstract fun writeOnForum()
@@ -28,10 +24,6 @@ abstract class User {
 
 class DefaultUser(
     override val name: String,
-    override val canWrite: Boolean = true,
-    override val canRead: Boolean = true,
-    override val canRemoveUsers: Boolean = false,
-    override val canRemoveMessages: Boolean = false,
 ) : User() {
     override fun readForum() {
         println("Пользователь $name читает форум")
@@ -44,10 +36,6 @@ class DefaultUser(
 
 class Admin(
     override val name: String,
-    override val canWrite: Boolean = true,
-    override val canRead: Boolean = true,
-    override val canRemoveUsers: Boolean = true,
-    override val canRemoveMessages: Boolean = true,
 ) : User() {
     override fun readForum() {
         println("Администратор $name читает форум")
