@@ -14,13 +14,7 @@ fun main() {
 
 }
 
-abstract class Animal : Flying, Swimming {
-    abstract val name: String
-}
-
-class Duck(
-    override val name: String
-) : Animal() {
+class Duck(private val name: String) : Flying, Swimming {
     override fun canFly() {
         println("$name: может летать")
     }
@@ -30,25 +24,15 @@ class Duck(
     }
 }
 
-class Carp(
-    override val name: String
-) : Animal() {
+class Carp(private val name: String) : Swimming {
     override fun canSwim() {
         println("$name: может плавать")
     }
-
-    override fun canFly() {
-    }
 }
 
-class Gull(
-    override val name: String
-) : Animal() {
+class Gull(private val name: String) : Flying {
     override fun canFly() {
         println("$name: может летать")
-    }
-
-    override fun canSwim() {
     }
 }
 
