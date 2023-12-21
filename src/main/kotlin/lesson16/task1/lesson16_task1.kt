@@ -6,3 +6,9 @@ fun main() {
     cube1.getRandomNumber()
 
 }
+
+class Cube(private val randomNumber: Int) {
+    fun getRandomNumber() {
+        println("Число на кубе: $randomNumber")
+    }
+}
