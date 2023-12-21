@@ -13,3 +13,12 @@ fun main() {
     println("Результат проверки пароля: $resultOfCheck")
 
 }
+
+class UserData(val userLogin: String, val userPassword: String) {
+
+    private val correctPassword = "123456"
+
+    fun getRightPassword(userPassword: String): Boolean {
+        return userPassword == correctPassword
+    }
+}
