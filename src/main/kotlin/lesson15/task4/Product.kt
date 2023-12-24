@@ -1,6 +1,6 @@
 package lesson15.task4
 
-abstract class Product : Search {
+abstract class Product : Searchable {
 
     abstract val name: String
     abstract val quantityOnStock: Int
@@ -26,6 +26,6 @@ class Component(
     }
 }
 
-interface Search {
+interface Searchable {
     fun startSearch(product: Product)
 }
