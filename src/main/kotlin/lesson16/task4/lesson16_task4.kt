@@ -2,35 +2,30 @@ package lesson16.task4
 
 fun main() {
 
-    val order = Order()
+    val order = Order(statusOfOrder = "не готов")
 
     val answerOfManager = order.getAnswerFromManager()
     if (answerOfManager) {
-        println("Введите один из четырех статусов заказа: не готов/создан/в пути/доставлен")
-        val newStatus = readln()
-        order.changeStatusOfOrder(answerOfManager, newStatus)
-        order.printCurrentStatusOfOrder()
+        order.changeAndPrintCurrentStatusOfOrder()
     } else return
 
 }
 
-class Order {
-    private var statusOfOrder = "не готов"
-    private val numberOfOrder = 11111
+class Order(private val numberOfOrder: Int = 1111, private var statusOfOrder: String) {
 
     fun getAnswerFromManager(): Boolean {
         println("Ответ менеджера: ")
         return readln().toBoolean()
     }
 
-    fun changeStatusOfOrder(answerOfManager: Boolean, newStatus: String) {
-        if (answerOfManager) {
-            statusOfOrder = newStatus
-            println("Статус заказа успешно изменен")
-        } else println("Менеджер не одобрил заявку")
+    private fun changeStatusOfOrder() {
+        println("Введите один из четырех статусов заказа: не готов/создан/в пути/доставлен")
+        statusOfOrder = readln()
+        println("Статус заказа успешно изменен")
     }
 
-    fun printCurrentStatusOfOrder() {
+    fun changeAndPrintCurrentStatusOfOrder() {
+        changeStatusOfOrder()
         println("Текущий статус заказа: $statusOfOrder")
     }
 }
