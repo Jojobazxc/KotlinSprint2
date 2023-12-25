@@ -3,22 +3,22 @@ package lesson16.task3
 fun main() {
 
     println("Введите логин:")
-    val userLogin = readln()
+    val registerLogin = readln()
     println("Введите пароль:")
-    val userPassword = readln()
+    val registerPassword = readln()
+    val user = UserData(registerLogin, registerPassword)
 
-    val user = UserData(userLogin, userPassword)
-    val resultOfCheck = user.getRightPassword(userPassword)
+    println("Введите пароль еще раз")
+    val readUserPassword = readln()
+
+    val resultOfCheck = user.isRightPassword(readUserPassword)
 
     println("Результат проверки пароля: $resultOfCheck")
 
 }
 
-class UserData(val userLogin: String, val userPassword: String) {
-
-    private val correctPassword = "123456"
-
-    fun getRightPassword(userPassword: String): Boolean {
-        return userPassword == correctPassword
+class UserData(val userLogin: String, private val userPassword: String) {
+    fun isRightPassword(readUserPassword: String): Boolean {
+        return readUserPassword == userPassword
     }
 }
