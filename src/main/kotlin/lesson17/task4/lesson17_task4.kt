@@ -10,3 +10,13 @@ fun main() {
     println("Счетчик перемещений: ${package1.countOfChange}")
 
 }
+
+class Package(numberOfPackage: Int, currentGeo: String) {
+
+    var countOfChange: Int = 0
+    var currentGeo: String = currentGeo
+        set(value) {
+            field = value
+            countOfChange++
+        }
+}
