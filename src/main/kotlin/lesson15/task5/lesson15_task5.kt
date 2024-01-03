@@ -2,106 +2,103 @@ package lesson15.task5
 
 fun main() {
 
-    val cargoCar = CargoCar(capacity = 1, liftingCapacity = 2)
-    cargoCar.loadingTheCar()
+    val cargoCar = CargoCar()
+    cargoCar.loadingTheCar(1, 1)
+    cargoCar.loadingTheCar(0, 1)
+    println()
     cargoCar.hitTheRoad()
-    cargoCar.unloadingTheCar()
     println()
-
-    val car = Car(capacity = 3, liftingCapacity = 0)
-    car.loadingTheCar()
+    cargoCar.unloadingTheCar(1, 1)
+    cargoCar.unloadingTheCar(0, 1)
+    println()
+    val car = Car()
+    car.loadingTheCar(1, 0)
+    car.loadingTheCar(2, 0)
+    println()
     car.hitTheRoad()
-    car.unloadingTheCar()
     println()
-
-    val secondCar = Car(capacity = 2, liftingCapacity = 0)
-    secondCar.loadingTheCar()
-    secondCar.hitTheRoad()
-    secondCar.loadingTheCar()
+    car.unloadingTheCar(3, 0)
     println()
-
-    // попытка загрузить легковушку недопустимыми значениями
-    val tryCar = Car(liftingCapacity = 5, capacity = 6)
-    tryCar.loadingTheCar()
-    tryCar.hitTheRoad()
-    tryCar.unloadingTheCar()
-    // попытка загрузить легковушку недопустимыми значениями
+    car.loadingTheCar(2, 0)
+    println()
+    car.hitTheRoad()
+    println()
+    car.unloadingTheCar(2, 0)
 
 }
 
 class CargoCar(
     private val typeOfCar: String = "Грузовая машина",
-    val capacity: Int,
-    val liftingCapacity: Int,
-    private var readyToUnloadingAndArrive: Boolean = false
+    private var capacity: Int = 1,
+    private var currentPassengers: Int = 0,
+    private val liftingCapacity: Int = 2,
+    private var currentCargo: Int = 0,
 ) : HitTheRoad, LoadingTheCar, UnloadingTheCar {
-    override fun loadingTheCar() {
-        if (capacity <= MAX_CAPACITY_FOR_CARGO_CAR && liftingCapacity <= MAX_LIFTING_CAPACITY_FOR_CARGO_CAR) {
-            println("$typeOfCar загружена кол-вом людей: $capacity ч., и кол-вом груза : $liftingCapacity т., Готова к отправлению ")
-            readyToUnloadingAndArrive = true
-        } else {
-            println("$typeOfCar не может перевозить столько людей или груза")
-            readyToUnloadingAndArrive = false
-        }
-    }
-
-    override fun unloadingTheCar() {
-        if (readyToUnloadingAndArrive) {
-            println("$typeOfCar разгружена с кол-вом людей: $capacity ч., и кол-вом груза : $liftingCapacity т.")
-        } else println("Ошибка, $typeOfCar изначально не была загружена")
-    }
-
     override fun hitTheRoad() {
-        if (readyToUnloadingAndArrive) {
-            println("$typeOfCar отправлена в путь с кол-вом людей: $capacity ч., и кол-вом груза : $liftingCapacity т.")
-        } else println("Ошибка, \"$typeOfCar\" не может перевозить столько людей или груза")
+        println("$typeOfCar отправилась в путь с $currentPassengers пассажир(ом)/(ами) и $currentCargo т. груза")
     }
+
+    override fun loadingTheCar(quantityOfPassengers: Int, quantityOfCargo: Int) {
+        if (currentPassengers + quantityOfPassengers <= capacity && currentCargo + quantityOfCargo <= liftingCapacity) {
+            currentPassengers += quantityOfPassengers
+            currentCargo += quantityOfCargo
+            println("Пассажир(ы) и груз добавлен(ы). Текущее кол-во пассажиров: $currentPassengers, груза: $currentCargo")
+        } else println("Достигнута максимальная вместимость, или грузовая машина не может вмещать столько пассажиров или груза")
+    }
+
+    override fun unloadingTheCar(quantityOfPassengers: Int, quantityOfCargo: Int) {
+        if (quantityOfCargo <= currentCargo && currentCargo >= 0) {
+            currentCargo -= quantityOfCargo
+            println("Груз выгружен. Текущее кол-во груза: $currentCargo")
+        } else println("Отсутствует груз для выгрузки")
+        if (quantityOfPassengers <= currentPassengers && currentPassengers >= 0) {
+            currentPassengers -= quantityOfPassengers
+            println("Пассажир(ы) выгружен(ы). Текущее кол-во пассажиров: $currentPassengers")
+        } else println("Отсутствуют пассажиры для выгрузки")
+    }
+
 }
 
 class Car(
-    val typeOfCar: String = "Легковая машина",
-    val capacity: Int,
-    val liftingCapacity: Int,
-    var readyToUnloadingAndArrive: Boolean = false
+    private val typeOfCar: String = "Легковая машина",
+    private var capacity: Int = 3,
+    private var currentPassengers: Int = 0,
+    private val liftingCapacity: Int = 0,
+    private var currentCargo: Int = 0,
 ) : HitTheRoad, LoadingTheCar, UnloadingTheCar {
     override fun hitTheRoad() {
-        if (readyToUnloadingAndArrive) {
-            println("$typeOfCar отправлена в путь с кол-вом людей: $capacity ч., и кол-вом груза : $liftingCapacity т.")
-        } else println("Ошибка, \"$typeOfCar\" не может перевозить столько людей")
+        println("$typeOfCar отправилась в путь с $currentPassengers пассажир(ом)/(ами) и $currentCargo т. груза")
     }
 
-    override fun loadingTheCar() {
-        if (capacity <= MAX_CAPACITY_FOR_CAR && liftingCapacity == MAX_LIFTING_CAPACITY_FOR_CAR) {
-            println("$typeOfCar загружена кол-вом людей: $capacity ч., и кол-вом груза : $liftingCapacity т., Готова к отправлению ")
-            readyToUnloadingAndArrive = true
-        } else {
-            println("$typeOfCar не может перевозить столько людей или груза")
-            readyToUnloadingAndArrive = false
+    override fun loadingTheCar(quantityOfPassengers: Int, quantityOfCargo: Int) {
+        if (currentPassengers + quantityOfPassengers <= capacity) {
+            currentPassengers += quantityOfPassengers
+            currentCargo += quantityOfCargo
+            println("Загружен(ы) $quantityOfPassengers пассажир(а). Текущее кол-во пассажиров: $currentPassengers")
+        } else println("Достигнута максимальная вместимость, или легковая машина не может вмещать столько пассажиров")
+        if (quantityOfCargo > 0) println("$typeOfCar не может перевозить груз")
+    }
+
+    override fun unloadingTheCar(quantityOfPassengers: Int, quantityOfCargo: Int) {
+        if (quantityOfCargo > 0) {
+            println("В легковой машине нельзя перевозить/разгружать груз")
         }
-    }
-
-    override fun unloadingTheCar() {
-        if (readyToUnloadingAndArrive) {
-            println("$typeOfCar разгружена с кол-вом людей: $capacity ч.")
-        } else println("Ошибка, $typeOfCar изначально не была загружена")
+        if (quantityOfPassengers <= currentPassengers && currentPassengers >= 0) {
+            currentPassengers -= quantityOfPassengers
+            println("Пассажир(ы) выгружен(ы). Текущее кол-во пассажиров: $currentPassengers")
+        } else println("Отсутствуют пассажиры для выгрузки")
     }
 }
-
 
 interface HitTheRoad {
     fun hitTheRoad()
 }
 
 interface LoadingTheCar {
-    fun loadingTheCar()
+    fun loadingTheCar(quantityOfPassengers: Int, quantityOfCargo: Int)
 }
 
 interface UnloadingTheCar {
-    fun unloadingTheCar()
+    fun unloadingTheCar(quantityOfPassengers: Int, quantityOfCargo: Int)
 }
 
-
-const val MAX_CAPACITY_FOR_CAR = 3
-const val MAX_CAPACITY_FOR_CARGO_CAR = 1
-const val MAX_LIFTING_CAPACITY_FOR_CAR = 0
-const val MAX_LIFTING_CAPACITY_FOR_CARGO_CAR = 2
