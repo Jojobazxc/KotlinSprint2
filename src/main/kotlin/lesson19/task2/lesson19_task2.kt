@@ -18,12 +18,22 @@ enum class Categories {
     DIFFERENT,
 }
 
-fun getCategory(categories: Categories): String{
+fun getCategory(categories: Categories): String {
 
-    return when(categories){
+    return when (categories) {
         Categories.CLOTHES -> "Одежда"
         Categories.STATIONERY -> "Канцтовары"
         Categories.DIFFERENT -> "Разное"
+    }
+
+}
+
+class Product(private val name: String, private val id: Int, private val categories: String) {
+
+    fun getInfoAboutProduct() {
+        println("Название товара: $name")
+        println("Id товара: $id")
+        println("Категория: $categories")
     }
 
 }
