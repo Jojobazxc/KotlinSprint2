@@ -11,31 +11,30 @@ fun main() {
 
 }
 
-open class Dice {
-
+open class Dice(val quantityOfEdges: Int) {
     open fun getRandomNumber() {}
 
 }
 
 class FourEdges(
-    private val quantityOfEdges: Int
-) : Dice() {
+    quantityOfEdges: Int
+) : Dice(quantityOfEdges) {
     override fun getRandomNumber() {
         println("Выпавшее число: ${(1..quantityOfEdges).random()}")
     }
 }
 
 class SixEdges(
-    private val quantityOfEdges: Int
-) : Dice() {
+    quantityOfEdges: Int
+) : Dice(quantityOfEdges) {
     override fun getRandomNumber() {
         println("Выпавшее число: ${(1..quantityOfEdges).random()}")
     }
 }
 
 class EightEdges(
-    private val quantityOfEdges: Int
-) : Dice() {
+    quantityOfEdges: Int
+) : Dice(quantityOfEdges) {
     override fun getRandomNumber() {
         println("Выпавшее число: ${(1..quantityOfEdges).random()}")
     }
